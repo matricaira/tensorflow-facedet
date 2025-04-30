@@ -37,7 +37,7 @@ const detectFaces = async () => { // Properly declare the function as async
    );
    ctx.stroke();
 
-   clx.fillStyle = "red";
+   ctx.fillStyle = "red";
    pred.landmarks.forEach(landmark => {
     ctx.fillRect(landmark[0], landmark[1], 5, 5);
    })
