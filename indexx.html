@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Detection Login System</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Load TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <!-- Load Face-API.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="app-container">
+            <h1>Face Detection Login</h1>
+            
+            <!-- Camera Container -->
+            <div id="camera-container">
+                <video id="video" autoplay playsinline></video>
+                <canvas id="canvas"></canvas>
+                <div id="loading-message">Loading Face Detection Model...</div>
+                <div id="face-status"></div>
+            </div>
+            
+            <!-- Login Form (Initially hidden) -->
+            <div id="login-form" class="hidden">
+                <h2>Login to Your Account</h2>
+                <form id="auth-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" id="login-button">Login</button>
+                </form>
+                <p class="register-link">Don't have an account? <a href="#" id="register-link">Register</a></p>
+            </div>
+            
+            <!-- Register Form (Initially hidden) -->
+            <div id="register-form" class="hidden">
+                <h2>Create a New Account</h2>
+                <form id="register-auth-form">
+                    <div class="form-group">
+                        <label for="reg-username">Username</label>
+                        <input type="text" id="reg-username" name="reg-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-password">Password</label>
+                        <input type="password" id="reg-password" name="reg-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" name="confirm-password" required>
+                    </div>
+                    <button type="submit" id="register-button">Register</button>
+                </form>
+                <p class="login-link">Already have an account? <a href="#" id="login-link">Login</a></p>
+            </div>
+            
+            <!-- Access Denied Message -->
+            <div id="access-denied" class="hidden">
+                <h2>Access Denied</h2>
+                <p>No face detected. Please ensure your face is visible to the camera.</p>
+                <button id="retry-button">Try Again</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Page (Initially hidden) -->
+    <div id="dashboard" class="hidden">
+        <header>
+            <h1>Welcome to Dashboard</h1>
+            <button id="logout-button">Logout</button>
+        </header>
+        <div class="dashboard-content">
+            <h2>Login History</h2>
+            <table id="login-history">
+                <thead>
+                    <tr>
+                        <th>Date & Time</th>
+                        <th>Status</th>
+                        <th>Device</th>
+                    </tr>
+                </thead>
+                <tbody id="history-data">
+                    <!-- Login history data will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
